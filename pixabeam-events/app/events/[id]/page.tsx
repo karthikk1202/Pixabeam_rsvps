@@ -1,12 +1,17 @@
-import { supabase } from '../../../lib/supabase';
 import Link from 'next/link';
+import { supabase } from '../../../lib/supabase';
 
-export default async function EventPage({ params }: { params: { id: string } }) {
-  const eventId = params.id;
+// Use a permissive prop type to satisfy Vercel's strict build
+export default async function EventPage(props: any) {
+  const eventId = props?.params?.id as string;
 
   const [{ data: event, error: e1 }, { data: rsvps, error: e2 }] = await Promise.all([
     supabase.from('events').select('*').eq('id', eventId).single(),
-    supabase.from('rsvps').select('status, created_at').eq('event_id', eventId).order('created_at', { ascending: false }),
+    supabase
+      .from('rsvps')
+      .select('status, created_at')
+      .eq('event_id', eventId)
+      .order('created_at', { ascending: false }),
   ]);
 
   if (e1) return <pre>Failed to load event: {e1.message}</pre>;
