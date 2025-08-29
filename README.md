@@ -22,3 +22,6 @@ Tables: users, events, rsvps (status enum: yes/no/maybe).
 
 ### ERD & Screenshots
 See `./screenshots/` for ERD, table rows, and app screens.
+
+### Vercel Link
+
