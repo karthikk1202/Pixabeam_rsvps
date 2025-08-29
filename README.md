@@ -24,4 +24,4 @@ Tables: users, events, rsvps (status enum: yes/no/maybe).
 See `./screenshots/` for ERD, table rows, and app screens.
 
 ### Vercel Link
-
+https://pixabeam-rsvps-ze1o.vercel.app/
